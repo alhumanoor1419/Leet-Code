@@ -1,0 +1,12 @@
+class Solution:
+    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
+        arr = [0] * 1001
+        for num,start,end in trips:
+            arr[start] += num
+            arr[end] -= num
+        current_passenger = 0
+        for passengers in arr:
+            current_passenger += passengers
+            if current_passenger > capacity:
+                return False
+        return True
