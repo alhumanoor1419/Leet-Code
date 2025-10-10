@@ -1,0 +1,15 @@
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        mod_index = {0: -1}
+        running_sum = 0
+        
+        for i, num in enumerate(nums):
+            running_sum += num
+            r = running_sum % k
+            if r in mod_index:
+                prev_index = mod_index[r]
+                if i - prev_index >= 2:
+                    return True
+            else:
+                mod_index[r] = i
+        return False
