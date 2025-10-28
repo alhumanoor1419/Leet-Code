@@ -1,0 +1,32 @@
+class Solution:
+    def partitionDisjoint(self, nums):
+        n = len(nums)
+        min_right = [0] * n
+        
+        # Step 1: Build suffix minimums
+        min_right[-1] = nums[-1]
+        for i in range(n - 2, -1, -1):
+            min_right[i] = min(nums[i], min_right[i + 1])
+        
+        # Step 2: Traverse to find partition point
+        max_left = float('-inf')
+        for i in range(n - 1):  # left must be non-empty
+            max_left = max(max_left, nums[i])
+            if max_left <= min_right[i + 1]:
+                return i + 1
+
+
+
+class Solution:
+    def partitionDisjoint(self, nums):
+        left_max = nums[0]
+        cur_max = nums[0]
+        partition_idx = 0
+        
+        for i in range(1, len(nums)):
+            cur_max = max(cur_max, nums[i])
+            if nums[i] < left_max:
+                left_max = cur_max
+                partition_idx = i
+        
+        return partition_idx + 1
