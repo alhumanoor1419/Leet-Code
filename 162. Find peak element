@@ -1,0 +1,15 @@
+class Solution:
+    def findPeakElement(self, nums):
+        left, right = 0, len(nums) - 1
+        
+        while left < right:
+            mid = (left + right) // 2
+            
+            # If mid is on the increasing slope
+            if nums[mid] < nums[mid + 1]:
+                left = mid + 1
+            else:
+                # mid could be a peak, so include it
+                right = mid
+        
+        return left
