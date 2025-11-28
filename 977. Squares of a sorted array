@@ -2,7 +2,6 @@ class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
         lst=[]
         for val in nums:
-            sqrt=val*val
-            lst.append(sqrt)
+            lst.append(val*val)
         lst.sort()
         return lst
