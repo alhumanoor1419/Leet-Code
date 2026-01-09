@@ -9,7 +9,7 @@ class Solution:
         start = nums[0]
 
         for i in range(n):
-            # if it's the last element OR the next element is not consecutive
+           
             if i == n - 1 or nums[i] + 1 != nums[i + 1]:
                 end = nums[i]
 
@@ -18,7 +18,6 @@ class Solution:
                 else:
                     result.append(str(start) + "->" + str(end))
 
-                # set start for next range (if exists)
                 if i != n - 1:
                     start = nums[i + 1]
 
